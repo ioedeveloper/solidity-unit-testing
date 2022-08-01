@@ -13,5 +13,5 @@ outputs:
   time: # id of output
     description: 'The time the test suite ran'
 runs:
-  using: 'node14'
+  using: 'node16'
   main: 'dist/index.js'
