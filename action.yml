@@ -14,4 +14,4 @@ outputs:
     description: 'The time the test suite ran'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
