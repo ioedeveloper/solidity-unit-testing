@@ -1,0 +1,27 @@
+{
+  "name": "Solidity-Unit-Testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ioedeveloper/Solidity-Unit-Testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ioedeveloper/Solidity-Unit-Testing/issues"
+  },
+  "homepage": "https://github.com/ioedeveloper/Solidity-Unit-Testing#readme",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.0.3",
+    "@remix-project/remix-tests": "^0.2.15"
+  }
+}

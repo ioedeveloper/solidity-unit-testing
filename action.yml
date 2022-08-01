@@ -1,0 +1,17 @@
+name: 'Solidity Unit Testing'
+description: 'Greet someone and record the time'
+inputs:
+  source-folder:
+    description: 'Directory path containing all test files'
+    required: false
+    default: ''
+  source-file:
+    description: 'File path to single test file'
+    required: false
+    default: ''
+outputs:
+  time: # id of output
+    description: 'The time the test suite ran'
+runs:
+  using: 'node12'
+  main: 'index.js'
