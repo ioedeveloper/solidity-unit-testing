@@ -16,3 +16,4 @@ jobs:
         uses: ioedeveloper/solidity-unit-testing@v0.1.2-dev
         with:
           source-folder: 'sample/tests'
+          source-file: 'sample/tests/Ballot.test.sol'
