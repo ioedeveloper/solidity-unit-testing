@@ -29,7 +29,7 @@ async function execute () {
 
 
   await core.group("Run tests", async () => {
-    await cli.exec('remix-tests', [testPath, '--compiler', compilerVersion])
+    await cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])
   })
 }
 
