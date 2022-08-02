@@ -61,54 +61,63 @@ var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 function execute() {
     return __awaiter(this, void 0, void 0, function () {
-        var sourceFolder, sourceFile, currentCompilerUrl, workingDirectory, yarnLock, isYarnRepo, packageLock, isNPMrepo, _a, _b;
+        var testPath, compilerVersion, workingDirectory;
         var _this = this;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    sourceFolder = core.getInput('source-folder');
-                    sourceFile = core.getInput('source-file');
-                    currentCompilerUrl = core.getInput('compiler-url');
+                    testPath = core.getInput('test-path');
+                    compilerVersion = core.getInput('compiler-version');
+                    console.log('compiler-version: ', compilerVersion);
                     workingDirectory = process.cwd();
                     return [4 /*yield*/, cli.exec('ls')];
                 case 1:
-                    _c.sent();
-                    yarnLock = path.join(workingDirectory, 'yarn.lock');
-                    isYarnRepo = fs.existsSync(yarnLock);
-                    packageLock = path.join(workingDirectory, 'package-lock.json');
-                    isNPMrepo = fs.existsSync(packageLock);
-                    if (!isYarnRepo) return [3 /*break*/, 3];
-                    return [4 /*yield*/, cli.exec('yarn', ['global', 'add', '@remix-project/remix-tests'])];
-                case 2:
-                    _c.sent();
-                    return [3 /*break*/, 8];
-                case 3:
-                    if (!isNPMrepo) return [3 /*break*/, 5];
-                    return [4 /*yield*/, cli.exec('npm', ['install', '@remix-project/remix-tests', '-g'])];
-                case 4:
-                    _c.sent();
-                    return [3 /*break*/, 8];
-                case 5: return [4 /*yield*/, cli.exec('npm', ['init', '-y'])];
-                case 6:
-                    _c.sent();
-                    return [4 /*yield*/, cli.exec('npm', ['install', '@remix-project/remix-tests', '-g'])];
-                case 7:
-                    _c.sent();
-                    _c.label = 8;
-                case 8:
-                    _b = (_a = console).log;
-                    return [4 /*yield*/, fs.promises.readFile(isYarnRepo ? yarnLock : packageLock)];
-                case 9:
-                    _b.apply(_a, [_c.sent()]);
-                    console.log('sourceFolder: ', sourceFolder);
-                    console.log('sourceFile: ', sourceFile);
-                    return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
+                    _a.sent();
+                    return [4 /*yield*/, core.group("Install @remix-project/remix-tests cli", function () { return __awaiter(_this, void 0, void 0, function () {
+                            var yarnLock, isYarnRepo, packageLock, isNPMrepo;
                             return __generator(this, function (_a) {
-                                return [2 /*return*/];
+                                switch (_a.label) {
+                                    case 0:
+                                        yarnLock = path.join(workingDirectory, 'yarn.lock');
+                                        isYarnRepo = fs.existsSync(yarnLock);
+                                        packageLock = path.join(workingDirectory, 'package-lock.json');
+                                        isNPMrepo = fs.existsSync(packageLock);
+                                        if (!isYarnRepo) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, cli.exec('yarn', ['global', 'add', '@remix-project/remix-tests'])];
+                                    case 1:
+                                        _a.sent();
+                                        return [3 /*break*/, 7];
+                                    case 2:
+                                        if (!isNPMrepo) return [3 /*break*/, 4];
+                                        return [4 /*yield*/, cli.exec('npm', ['install', '@remix-project/remix-tests', '-g'])];
+                                    case 3:
+                                        _a.sent();
+                                        return [3 /*break*/, 7];
+                                    case 4: return [4 /*yield*/, cli.exec('npm', ['init', '-y'])];
+                                    case 5:
+                                        _a.sent();
+                                        return [4 /*yield*/, cli.exec('npm', ['install', '@remix-project/remix-tests', '-g'])];
+                                    case 6:
+                                        _a.sent();
+                                        _a.label = 7;
+                                    case 7: return [2 /*return*/];
+                                }
                             });
                         }); })];
-                case 10:
-                    _c.sent();
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, cli.exec('remix-tests', [testPath, '--compiler', compilerVersion])];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); })];
+                case 3:
+                    _a.sent();
                     return [2 /*return*/];
             }
         });
