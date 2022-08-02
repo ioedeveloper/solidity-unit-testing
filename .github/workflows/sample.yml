@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14.17.6
       - name: Run SUT Action
-        uses: ioedeveloper/solidity-unit-testing@v0.1.7-dev
+        uses: ioedeveloper/solidity-unit-testing@v0.1.8-dev
         with:
           source-folder: 'sample/tests'
           source-file: 'sample/tests/Ballot.test.sol'
