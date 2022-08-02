@@ -56,49 +56,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core = __importStar(require("@actions/core"));
-var remix_tests_1 = require("@remix-project/remix-tests");
-var fs = __importStar(require("fs/promises"));
+var exec = __importStar(require("@actions/exec"));
 function execute() {
     return __awaiter(this, void 0, void 0, function () {
-        var currentDirectory, sourceFolder, sourceFile, testRunner;
+        var sourceFolder, sourceFile, currentCompilerUrl;
         var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    currentDirectory = process.cwd();
-                    sourceFolder = core.getInput('source-folder') || '';
-                    sourceFile = core.getInput('source-file') || '';
-                    testRunner = new remix_tests_1.UnitTestRunner();
+                    sourceFolder = core.getInput('source-folder');
+                    sourceFile = core.getInput('source-file');
+                    currentCompilerUrl = core.getInput('compiler-url');
+                    exec.exec('ls');
                     console.log('sourceFolder: ', sourceFolder);
                     console.log('sourceFile: ', sourceFile);
-                    console.log('currentDirectory: ', currentDirectory);
-                    return [4 /*yield*/, core.group("Initialize Tests", function () { return __awaiter(_this, void 0, void 0, function () {
-                            var testFileContent, testDirContent;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0: return [4 /*yield*/, testRunner.init()];
-                                    case 1:
-                                        _a.sent();
-                                        return [4 /*yield*/, fs.readFile(sourceFile, 'utf8')];
-                                    case 2:
-                                        testFileContent = _a.sent();
-                                        return [4 /*yield*/, fs.readdir(sourceFolder)];
-                                    case 3:
-                                        testDirContent = _a.sent();
-                                        console.log('testFileContent: ', testFileContent);
-                                        console.log('testDirContent: ', testDirContent);
-                                        return [2 /*return*/];
-                                }
-                            });
-                        }); })];
-                case 1:
-                    _a.sent();
                     return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
                             return __generator(this, function (_a) {
                                 return [2 /*return*/];
                             });
                         }); })];
-                case 2:
+                case 1:
                     _a.sent();
                     return [2 /*return*/];
             }
