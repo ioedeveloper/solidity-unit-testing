@@ -114,10 +114,11 @@ function execute() {
                                         options = {
                                             listeners: {
                                                 stdout: function (data) {
+                                                    console.log('stdout: ', data.toString());
                                                     // myOutput += data.toString();
                                                 },
                                                 stderr: function (data) {
-                                                    core.setFailed(data.toString());
+                                                    console.log('stderr: ', data.toString());
                                                 }
                                             }
                                         };

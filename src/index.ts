@@ -32,10 +32,11 @@ async function execute () {
     const options = {
       listeners: {
         stdout: (data: Buffer) => {
+          console.log('stdout: ', data.toString())
           // myOutput += data.toString();
         },
         stderr: (data: Buffer) => {
-          core.setFailed(data.toString())
+          console.log('stderr: ', data.toString())
         }
       }
     }
