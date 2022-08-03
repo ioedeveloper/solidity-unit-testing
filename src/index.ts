@@ -29,11 +29,18 @@ async function execute () {
 
 
   await core.group("Run tests", async () => {
-    try {
-      await cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])
-    } catch (error) {
-      core.setFailed(error)
+    const options = {
+      listeners: {
+        stdout: (data: Buffer) => {
+          // myOutput += data.toString();
+        },
+        stderr: (data: Buffer) => {
+          core.setFailed(data.toString())
+        }
+      }
     }
+
+    await cli.exec('remix-tests', ['--compiler', compilerVersion, testPath], options)
   })
 }
 

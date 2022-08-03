@@ -107,20 +107,24 @@ function execute() {
                 case 2:
                     _a.sent();
                     return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
-                            var error_1;
+                            var options;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
-                                        _a.trys.push([0, 2, , 3]);
-                                        return [4 /*yield*/, cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])];
+                                        options = {
+                                            listeners: {
+                                                stdout: function (data) {
+                                                    // myOutput += data.toString();
+                                                },
+                                                stderr: function (data) {
+                                                    core.setFailed(data.toString());
+                                                }
+                                            }
+                                        };
+                                        return [4 /*yield*/, cli.exec('remix-tests', ['--compiler', compilerVersion, testPath], options)];
                                     case 1:
                                         _a.sent();
-                                        return [3 /*break*/, 3];
-                                    case 2:
-                                        error_1 = _a.sent();
-                                        core.setFailed(error_1);
-                                        return [3 /*break*/, 3];
-                                    case 3: return [2 /*return*/];
+                                        return [2 /*return*/];
                                 }
                             });
                         }); })];
