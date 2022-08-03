@@ -108,12 +108,10 @@ function execute() {
                     _a.sent();
                     return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
                             return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0: return [4 /*yield*/, cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])];
-                                    case 1:
-                                        _a.sent();
-                                        return [2 /*return*/];
-                                }
+                                cli.exec('remix-tests', ['--compiler', compilerVersion, testPath]).catch(function (error) {
+                                    core.setFailed(error);
+                                });
+                                return [2 /*return*/];
                             });
                         }); })];
                 case 3:
