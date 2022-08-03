@@ -107,11 +107,21 @@ function execute() {
                 case 2:
                     _a.sent();
                     return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
+                            var error_1;
                             return __generator(this, function (_a) {
-                                cli.exec('remix-tests', ['--compiler', compilerVersion, testPath]).catch(function (error) {
-                                    core.setFailed(error);
-                                });
-                                return [2 /*return*/];
+                                switch (_a.label) {
+                                    case 0:
+                                        _a.trys.push([0, 2, , 3]);
+                                        return [4 /*yield*/, cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])];
+                                    case 1:
+                                        _a.sent();
+                                        return [3 /*break*/, 3];
+                                    case 2:
+                                        error_1 = _a.sent();
+                                        core.setFailed(error_1);
+                                        return [3 /*break*/, 3];
+                                    case 3: return [2 /*return*/];
+                                }
                             });
                         }); })];
                 case 3:

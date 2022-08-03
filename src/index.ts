@@ -29,9 +29,11 @@ async function execute () {
 
 
   await core.group("Run tests", async () => {
-    cli.exec('remix-tests', ['--compiler', compilerVersion, testPath]).catch((error) => {
+    try {
+      await cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])
+    } catch (error) {
       core.setFailed(error)
-    })
+    }
   })
 }
 
