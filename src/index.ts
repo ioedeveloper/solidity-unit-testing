@@ -6,7 +6,6 @@ import * as path from 'path'
 async function execute () {
   const testPath = core.getInput('test-path')
   const compilerVersion = core.getInput('compiler-version')
-  console.log('compiler-version: ', compilerVersion)
   const workingDirectory = process.cwd()
 
   await cli.exec('ls')

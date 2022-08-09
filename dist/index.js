@@ -68,7 +68,6 @@ function execute() {
                 case 0:
                     testPath = core.getInput('test-path');
                     compilerVersion = core.getInput('compiler-version');
-                    console.log('compiler-version: ', compilerVersion);
                     workingDirectory = process.cwd();
                     return [4 /*yield*/, cli.exec('ls')];
                 case 1:
