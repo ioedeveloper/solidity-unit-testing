@@ -1,17 +1,15 @@
 name: 'Solidity Unit Testing'
 description: 'Greet someone and record the time'
 inputs:
-  source-folder:
-    description: 'Directory path containing all test files'
-    required: false
-    default: ''
-  source-file:
-    description: 'File path to single test file'
-    required: false
-    default: ''
+  test-path:
+    description: 'Path to file or directory containing all test files'
+    required: true
+  compiler-version:
+    description: 'set compiler version (e.g: 0.6.1, 0.7.1 etc)'
+  
 outputs:
   time: # id of output
     description: 'The time the test suite ran'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
