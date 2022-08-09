@@ -107,22 +107,9 @@ function execute() {
                 case 2:
                     _a.sent();
                     return [4 /*yield*/, core.group("Run tests", function () { return __awaiter(_this, void 0, void 0, function () {
-                            var options;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
-                                    case 0:
-                                        options = {
-                                            listeners: {
-                                                stdout: function (data) {
-                                                    console.log('stdout: ', data.toString());
-                                                    // myOutput += data.toString();
-                                                },
-                                                stderr: function (data) {
-                                                    console.log('stderr: ', data.toString());
-                                                }
-                                            }
-                                        };
-                                        return [4 /*yield*/, cli.exec('remix-tests', ['--compiler', compilerVersion, testPath], options)];
+                                    case 0: return [4 /*yield*/, cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])];
                                     case 1:
                                         _a.sent();
                                         return [2 /*return*/];

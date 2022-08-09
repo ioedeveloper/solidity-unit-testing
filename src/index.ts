@@ -29,19 +29,7 @@ async function execute () {
 
 
   await core.group("Run tests", async () => {
-    const options = {
-      listeners: {
-        stdout: (data: Buffer) => {
-          console.log('stdout: ', data.toString())
-          // myOutput += data.toString();
-        },
-        stderr: (data: Buffer) => {
-          console.log('stderr: ', data.toString())
-        }
-      }
-    }
-
-    await cli.exec('remix-tests', ['--compiler', compilerVersion, testPath], options)
+    await cli.exec('remix-tests', ['--compiler', compilerVersion, testPath])
   })
 }
 
