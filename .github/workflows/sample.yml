@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14.17.6
       - name: Run SUT Action
-        uses: ioedeveloper/solidity-unit-testing@v0.1.14-dev
+        uses: ioedeveloper/solidity-unit-testing@v0.1.15-dev
         with:
           test-path: 'sample/tests'
           compiler-version: '0.8.15'
